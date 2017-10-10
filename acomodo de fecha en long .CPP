@@ -51,7 +51,7 @@ Fecha::Fecha (int d, int m, int a){
    f2.mostrar();
 
    f3.mostrar();
-   cout<<"\n¿que datos deseas conocer?";
+   cout<<"\nÂ¿que datos deseas conocer?";
    cin>>dd,mm,aa;
 
    f4.set_Fecha(dd,mm,aa);
