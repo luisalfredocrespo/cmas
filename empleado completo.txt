@@ -1,0 +1,416 @@
+
+SQL> create table empleado_tabla (id int,nombre varchar(6),apellido varchar(9),c
+iudad varchar(8),direccion varchar(11));
+
+Table created.
+
+SQL> create table ciudad_tabla (id int,pais varchar(6),delegacion varchar(13));
+
+Table created.
+
+SQL> create table cliente_tabla (id int,nombre varchar(6),telefono varchar(9),co
+rreo varchar(10),membresia varchar(11));
+
+Table created.
+
+SQL> insert into values empleado_tabla(1,2,3,4,5,'luis,juan,fabian,jose,alfre','
+crespo,plata,dias,silva,barre','mexico,japon,china,cuba,india','calle4,calle10,c
+alle13,calle15,calle3' );
+insert into values empleado_tabla(1,2,3,4,5,'luis,juan,fabian,jose,alfre','cresp
+o,plata,dias,silva,barre','mexico,japon,china,cuba,india','calle4,calle10,calle1
+3,calle15,calle3' )
+            *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+SQL> insert into values empleado_tabla(1,2,3,4,5,'luis,juan,fabian,jose,alfre','
+crespo,plata,dias,silva,barre','mexico,japon,china,cuba,india','calle4,calle10,c
+alle13,calle15,calle3' );
+insert into values empleado_tabla(1,2,3,4,5,'luis,juan,fabian,jose,alfre','cresp
+o,plata,dias,silva,barre','mexico,japon,china,cuba,india','calle4,calle10,calle1
+3,calle15,calle3' )
+            *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+SQL> selec * from empleado_tabla;
+SP2-0734: unknown command beginning "selec * fr..." - rest of line ignored.
+SQL> select * from empleado_tabla;
+
+no rows selected
+
+SQL> insert into values empleado_tabla(1,'luis','crespo','mexico','calle4' );
+insert into values empleado_tabla(1,'luis','crespo','mexico','calle4' )
+            *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+SQL> insert into  empleado_tabla values (1,'luis','crespo','mexico','calle4' );
+
+1 row created.
+
+SQL> insert into  empleado_tabla values (1,2,3,4,5,'luis,juan,fabian,jose,alfre'
+,'crespo,plata,dias,silva,barre','mexico,japon,china,cuba,india','calle4,calle10
+,calle13,calle15,calle3' );
+insert into  empleado_tabla values (1,2,3,4,5,'luis,juan,fabian,jose,alfre','cre
+spo,plata,dias,silva,barre','mexico,japon,china,cuba,india','calle4,calle10,call
+e13,calle15,calle3' )
+             *
+ERROR at line 1:
+ORA-00913: too many values
+
+
+SQL> insert into  empleado_tabla values (2,'juan','plata','japon','calle15' );
+
+1 row created.
+
+SQL> insert into  empleado_tabla values (3,'lalo','silva','china','calle13' );
+
+1 row created.
+
+SQL> insert into  empleado_tabla values (4,'fabian','dias','cuba','calle1' );
+
+1 row created.
+
+SQL> insert into  empleado_tabla values (5,'naty','silva','colom','calle11' );
+
+1 row created.
+
+SQL> selec * from empleado_tabla;
+SP2-0734: unknown command beginning "selec * fr..." - rest of line ignored.
+SQL>
+SQL> select * from empleado_tabla;
+
+        ID NOMBRE APELLIDO  CIUDAD   DIRECCION
+---------- ------ --------- -------- -----------
+         1 luis   crespo    mexico   calle4
+         2 juan   plata     japon    calle15
+         3 lalo   silva     china    calle13
+         4 fabian dias      cuba     calle1
+         5 naty   silva     colom    calle11
+
+SQL> insert into  ciudad_tabla values (1,'cuba','cuba' );
+
+1 row created.
+
+SQL> insert into  ciudad_tabla values (2,'mexico','ixtapaluca' );
+
+1 row created.
+
+SQL> insert into  ciudad_tabla values (3,'mexico','iztapalapa' );
+
+1 row created.
+
+SQL> insert into  ciudad_tabla values (4,'mexico','ermita' );
+
+1 row created.
+
+SQL> insert into  ciudad_tabla values (5,'mexico','coyoacan' );
+
+1 row created.
+
+SQL> insert into  cliente_tabla values (1,'naty','26383259','colo@hot','vip' );
+
+1 row created.
+
+SQL> insert into  cliente_tabla values (2,'lus','56844906','colo@hot','plus' );
+
+1 row created.
+
+SQL> insert into  cliente_tabla values (3,'juan','58565134','colo@hot','plus' );
+
+
+1 row created.
+
+SQL> insert into  cliente_tabla values (4,'lalo','58565134','colo@hot','simple'
+);
+
+1 row created.
+
+SQL> insert into  cliente_tabla values (5,'esme','58565134','colo@hot','simple'
+);
+
+1 row created.
+
+SQL> select * from empleado_tabla;
+
+        ID NOMBRE APELLIDO  CIUDAD   DIRECCION
+---------- ------ --------- -------- -----------
+         1 luis   crespo    mexico   calle4
+         2 juan   plata     japon    calle15
+         3 lalo   silva     china    calle13
+         4 fabian dias      cuba     calle1
+         5 naty   silva     colom    calle11
+
+SQL> select * from cliente_tabla;
+
+        ID NOMBRE TELEFONO  CORREO     MEMBRESIA
+---------- ------ --------- ---------- -----------
+         1 naty   26383259  colo@hot   vip
+         2 lus    56844906  colo@hot   plus
+         3 juan   58565134  colo@hot   plus
+         4 lalo   58565134  colo@hot   simple
+         5 esme   58565134  colo@hot   simple
+
+SQL> select * from ciuddad_tabla;
+select * from ciuddad_tabla
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from ciudad_tabla;
+
+        ID PAIS   DELEGACION
+---------- ------ -------------
+         1 cuba   cuba
+         2 mexico ixtapaluca
+         3 mexico iztapalapa
+         4 mexico ermita
+         5 mexico coyoacan
+
+SQL> drop table emp
+
+SQL> drop table empleado_tabla cascade constraints;
+
+Table dropped.
+
+SQL> select * from empleado_tabla;
+select * from empleado_tabla
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create table empleado_tabla (id int,nombre varchar(6),apellido varchar(9),c
+iudad varchar(8),direccion varchar(11));
+
+Table created.
+
+SQL> insert into  empleado_tabla values (1,'luis','crespo','mexico','calle4' );
+
+1 row created.
+
+SQL> insert into  empleado_tabla values (2,'juan','plata','japon','calle15' );
+
+1 row created.
+
+SQL> insert into  empleado_tabla values (4,'fabian','dias','cuba','calle1' );
+
+1 row created.
+
+SQL> insert into  empleado_tabla values (3,'lalo','silva','china','calle13' );
+
+1 row created.
+
+SQL> insert into  empleado_tabla values (5,'naty','silva','colom','calle11' );
+
+1 row created.
+
+SQL> delete from empleado_tabla where add_correo=colo@hot;
+delete from empleado_tabla where add_correo=colo@hot
+*
+ERROR at line 1:
+ORA-04054: database link HOT does not exist
+
+
+SQL> select * from empleado_tabla;
+
+        ID NOMBRE APELLIDO  CIUDAD   DIRECCION
+---------- ------ --------- -------- -----------
+         1 luis   crespo    mexico   calle4
+         2 juan   plata     japon    calle15
+         4 fabian dias      cuba     calle1
+         3 lalo   silva     china    calle13
+         5 naty   silva     colom    calle11
+
+SQL> delete from cliente_tabla where add_correo=colo@hot;
+delete from cliente_tabla where add_correo=colo@hot
+*
+ERROR at line 1:
+ORA-04054: database link HOT does not exist
+
+
+SQL> delete from cliente_tabla where add_correo='colo@hot';
+delete from cliente_tabla where add_correo='colo@hot'
+                                *
+ERROR at line 1:
+ORA-00904: "ADD_CORREO": invalid identifier
+
+
+SQL> delete from cliente_tabla where add correo='colo@hot';
+delete from cliente_tabla where add correo='colo@hot'
+                                *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> delete from cliente_tabla where correo='colo@hot';
+
+5 rows deleted.
+
+SQL> select * from cliente_tabla;
+
+no rows selected
+
+SQL> create table cliente_tabla (id int,nombre varchar(6),telefono varchar(9),co
+rreo varchar(10),membresia varchar(11));
+create table cliente_tabla (id int,nombre varchar(6),telefono varchar(9),correo
+varchar(10),membresia varchar(11))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table cliente_tabla (id int,nombre varchar(6),telefono varchar(9),co
+rreo varchar(10),membresia varchar(11));
+create table cliente_tabla (id int,nombre varchar(6),telefono varchar(9),correo
+varchar(10),membresia varchar(11))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> select * from cliente_tabla;
+
+no rows selected
+
+SQL> insert into  cliente_tabla values (5,'esme','58565134','colo@hot','simple'
+);
+
+1 row created.
+
+SQL> insert into  cliente_tabla values (4,'lalo','58565134','colo@hot','simple'
+);
+
+1 row created.
+
+SQL> insert into  cliente_tabla values (3,'juan','58565134','col@hot','plus' );
+
+1 row created.
+
+SQL> insert into  cliente_tabla values (2,'lus','56844906','co@hot','plus' );
+
+1 row created.
+
+SQL> insert into  cliente_tabla values (1,'naty','26383259','c@hot','vip' );
+
+1 row created.
+
+SQL> select * from cliente_tabla;
+
+        ID NOMBRE TELEFONO  CORREO     MEMBRESIA
+---------- ------ --------- ---------- -----------
+         5 esme   58565134  colo@hot   simple
+         4 lalo   58565134  colo@hot   simple
+         3 juan   58565134  col@hot    plus
+         2 lus    56844906  co@hot     plus
+         1 naty   26383259  c@hot      vip
+
+SQL> delete from cliente_tabla where correo='colo@hot';
+
+2 rows deleted.
+
+SQL> select * from cliente_tabla;
+
+        ID NOMBRE TELEFONO  CORREO     MEMBRESIA
+---------- ------ --------- ---------- -----------
+         3 juan   58565134  col@hot    plus
+         2 lus    56844906  co@hot     plus
+         1 naty   26383259  c@hot      vip
+
+SQL> ater table cliente_tabla add precio varcar(8);
+SP2-0734: unknown command beginning "ater table..." - rest of line ignored.
+SQL> select * from cliente_tabla;
+
+        ID NOMBRE TELEFONO  CORREO     MEMBRESIA
+---------- ------ --------- ---------- -----------
+         3 juan   58565134  col@hot    plus
+         2 lus    56844906  co@hot     plus
+         1 naty   26383259  c@hot      vip
+
+SQL> ater table cliente_tabla add precio varchar(8);
+SP2-0734: unknown command beginning "ater table..." - rest of line ignored.
+SQL> select * from cliente_tabla;
+
+        ID NOMBRE TELEFONO  CORREO     MEMBRESIA
+---------- ------ --------- ---------- -----------
+         3 juan   58565134  col@hot    plus
+         2 lus    56844906  co@hot     plus
+         1 naty   26383259  c@hot      vip
+
+SQL> ater table cliente_tabla add precio varchar(8);
+SP2-0734: unknown command beginning "ater table..." - rest of line ignored.
+SQL> alter table cliente_tabla add precio varchar(8);
+
+Table altered.
+
+SQL> select * from cliente_tabla;
+
+        ID NOMBRE TELEFONO  CORREO     MEMBRESIA   PRECIO
+---------- ------ --------- ---------- ----------- --------
+         3 juan   58565134  col@hot    plus
+         2 lus    56844906  co@hot     plus
+         1 naty   26383259  c@hot      vip
+
+SQL> Update cliente_tabla SET correo='salon@hot' where colonia='o@hot';
+Update cliente_tabla SET correo='salon@hot' where colonia='o@hot'
+                                                  *
+ERROR at line 1:
+ORA-00904: "COLONIA": invalid identifier
+
+
+SQL> Update cliente_tabla SET correo='salon@hot' where correo='o@hot';
+
+0 rows updated.
+
+SQL> Update cliente_tabla SET correo='salon@hot' where correo='c@hot';
+
+1 row updated.
+
+SQL> select * from cliente_tabla;
+
+        ID NOMBRE TELEFONO  CORREO     MEMBRESIA   PRECIO
+---------- ------ --------- ---------- ----------- --------
+         3 juan   58565134  col@hot    plus
+         2 lus    56844906  co@hot     plus
+         1 naty   26383259  salon@hot  vip
+
+SQL> ater table cliente_tabla add cantidad varcar(9);
+SP2-0734: unknown command beginning "ater table..." - rest of line ignored.
+SQL> alter table cliente_tabla add cantidad varcar(9);
+alter table cliente_tabla add cantidad varcar(9)
+                                              *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option
+
+
+SQL> alter table cliente_tabla add pago varcar(5);
+alter table cliente_tabla add pago varcar(5)
+                                          *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option
+
+
+SQL> alter table cliente_tabla add pago varchar(5);
+
+Table altered.
+
+SQL> select * from cliente_tabla;
+
+        ID NOMBRE TELEFONO  CORREO     MEMBRESIA   PRECIO   PAGO
+---------- ------ --------- ---------- ----------- -------- -----
+         3 juan   58565134  col@hot    plus
+         2 lus    56844906  co@hot     plus
+         1 naty   26383259  salon@hot  vip
+
+SQL>
+
+
+
+
+
+
